@@ -18,6 +18,7 @@ def file_upload(request):
     else:
         form = UploadFileForm()
     return render(request, 'file_upload/upload.html', {'form': form})
+    #settings.pyのINSTALLED_APPに'file_upload'を書いておくこと
 
 def handle_uploaded_file(file_obj):
     sys.stderr.write("*** handle_uploaded_file *** aaa ***\n")
@@ -32,5 +33,5 @@ def handle_uploaded_file(file_obj):
 
 def success(request):
     str_out = "Success!<p />"
-    str_out += "成功<p />"
+    str_out += "成功<p /><a href='/file_upload'>ファイルアップロードに戻る</a>"
     return HttpResponse(str_out)
