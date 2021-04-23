@@ -24,6 +24,7 @@ def file_upload(request):
     return render(request, 'file_upload/upload.html', {'form': form})
     #settings.pyのINSTALLED_APPに'file_upload'を書いておくこと
 
+#アップロードされたファイルを操作する関数
 def handle_uploaded_file(file_obj):
     sys.stderr.write("*** handle_uploaded_file *** aaa ***\n")
     sys.stderr.write(file_obj.name + "\n")
@@ -102,6 +103,7 @@ def handle_uploaded_file(file_obj):
     y_pred = pd.concat([X, y_pred], axis=1)
     #y_pred = y_pred[:3391]
     y_pred.to_csv("media/documents/y_pred.csv", index=False)
+    file = "media/documents/y_pred.csv"
 
 
 
