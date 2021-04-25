@@ -50,6 +50,8 @@ def handle_uploaded_file(file_obj):
     AdJob["給与/交通費　備考"] = AdJob["給与/交通費　備考"].str.rstrip("円＋残業代（21日勤務の場合）")
 
     AdJob["給与/交通費　備考"] = AdJob['給与/交通費　備考'].str.replace("万", ' * 10000 + ')
+    AdJob = AdJob.drop("対象者設定　年齢上限", axis=1)
+    AdJob = AdJob.drop("会社概要　業界コード", axis=1)
     
     AdJob = AdJob.fillna({"（紹介予定）入社後の雇用形態": 3,
                     "（派遣先）配属先部署　平均年齢": AdJob["（派遣先）配属先部署　平均年齢"].mean(),
@@ -67,6 +69,9 @@ def handle_uploaded_file(file_obj):
     AdJob_test["給与/交通費　備考"] = AdJob_test["給与/交通費　備考"].str.rstrip("円＋残業代（21日勤務の場合）")
 
     AdJob_test["給与/交通費　備考"] = AdJob_test["給与/交通費　備考"].str.replace("万", '*10000+')
+    AdJob_test = AdJob_test.drop("対象者設定　年齢上限", axis=1)
+    AdJob_test = AdJob_test.drop("会社概要　業界コード", axis=1)
+
     AdJob_test = AdJob_test.fillna({"（紹介予定）入社後の雇用形態": 3,
                     "（派遣先）配属先部署　平均年齢": AdJob_test["（派遣先）配属先部署　平均年齢"].mean(),
                     "給与/交通費　給与上限": AdJob_test["給与/交通費　給与上限"].min(),
