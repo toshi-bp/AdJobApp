@@ -95,7 +95,7 @@ def handle_uploaded_file(file_obj):
     #y_pred = y_pred[:3391]
     #RMSEで評価を行う
     from sklearn.metrics import mean_squared_error
-    rmse = np.sqrt(mean_squared_error(y_pred, y_train[:3391])) 
+    rmse = np.sqrt(mean_squared_error(y_pred, y_train[:3391]))
     print(rmse)
 
     #MAEで評価を行う
